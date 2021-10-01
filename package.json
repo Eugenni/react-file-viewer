@@ -1,12 +1,12 @@
 {
-  "name": "react-file-viewer",
-  "version": "1.2.1",
+  "name": "@redcomrade/react-file-viewer",
+  "version": "1.2.2",
   "description": "Extendable file viewer for web",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/plangrid/react-file-viewer.git"
+    "url": "git+https://github.com/Eugenni/react-file-viewer.git"
   },
   "scripts": {
     "dev": "webpack -d --watch",
@@ -35,9 +35,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/plangrid/react-file-viewer/issues"
+    "url": "https://github.com/Eugenni/react-file-viewer/issues"
   },
-  "homepage": "https://github.com/plangrid/react-file-viewer#readme",
+  "homepage": "https://github.com/Eugenni/react-file-viewer#readme",
   "devDependencies": {
     "autoprefixer": "^7.1.0",
     "babel-core": "^6.24.1",
