@@ -25,10 +25,12 @@ export default class extends Component {
       savedLongitude,
       savedLatitude,
     };
+
+    this.cont360 = React.createRef();
   }
 
   componentDidMount() {
-    const el = document.getElementById('360-photo');
+    const el = this.cont360.current;
     const positionInfo = el.getBoundingClientRect();
     const height = positionInfo.height;
     const width = positionInfo.width;
@@ -106,7 +108,7 @@ export default class extends Component {
   render() {
     return (
       <div
-        id="360-photo"
+        ref={this.cont360}
         className="photo360"
         onMouseDown={this.onMouseDown}
         onMouseMove={this.onMouseMove}

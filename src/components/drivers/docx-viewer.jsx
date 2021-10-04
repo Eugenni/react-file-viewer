@@ -7,6 +7,10 @@ import 'styles/docx.scss';
 import Loading from '../loading';
 
 export default class extends Component {
+  constructor(props) {
+    super(props);
+    this.docx = React.createRef();
+  }
   componentDidMount() {
     const jsonFile = new XMLHttpRequest();
     jsonFile.open('GET', this.props.filePath, true);
@@ -22,7 +26,7 @@ export default class extends Component {
           const docEl = document.createElement('div');
           docEl.className = 'document-container';
           docEl.innerHTML = result.value;
-          document.getElementById('docx').innerHTML = docEl.outerHTML;
+          this.docx.current.innerHTML = docEl.outerHTML;
         })
         .catch((a) => {
           console.log('alexei: something went wrong', a);
@@ -34,7 +38,7 @@ export default class extends Component {
 
   render() {
     return (
-      <div id="docx">
+      <div className="docx" ref={this.docx} >
         <Loading />
       </div>);
   }
