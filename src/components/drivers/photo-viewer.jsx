@@ -29,6 +29,15 @@ export default class PhotoViewer extends Component {
     return { height: imgHeight, width: imgWidth };
   }
 
+  getImageDataSrc() {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.height = this.naturalHeight;
+    canvas.width = this.naturalWidth;
+    context.drawImage(this, 0, 0);
+    return canvas.toDataURL('image/jpeg');
+  }
+
   render() {
     const containerStyles = {
       width: `${this.props.width}px`,
@@ -38,9 +47,11 @@ export default class PhotoViewer extends Component {
     const { originalWidth, originalHeight } = this.props;
     const imageDimensions = this.getImageDimensions.call(this, originalWidth, originalHeight);
 
+    const srcData = this.getImageDataSrc.call(this.props.texture.image);
+
     return (
       <div style={containerStyles} className="photo-viewer-container">
-        <img className="photo" alt={'file_preview'} src={this.props.texture.image.src} style={{ width: imageDimensions.width, height: imageDimensions.height }} />
+        <img className="photo" alt={'file_preview'} src={srcData} style={{ width: imageDimensions.width, height: imageDimensions.height }} />
       </div>
     );
   }
