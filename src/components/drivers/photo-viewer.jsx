@@ -40,7 +40,7 @@ export default class PhotoViewer extends Component {
 
     return (
       <div style={containerStyles} className="photo-viewer-container">
-        <img className="photo"  src={this.props.texture.image.src} style={{width:imageDimensions.width, height:imageDimensions.height}}/>
+        <img className="photo" alt={'file_preview'} src={this.props.texture.image.src} style={{ width: imageDimensions.width, height: imageDimensions.height }} />
       </div>
     );
   }
