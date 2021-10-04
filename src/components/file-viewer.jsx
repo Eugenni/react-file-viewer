@@ -22,6 +22,7 @@ class FileViewer extends Component {
     super(props);
     this.state = {
       loading: true,
+      Driver: null,
     };
     this.container = React.createRef();
   }
@@ -30,7 +31,11 @@ class FileViewer extends Component {
     const container = this.container.current;
     const height = container ? container.clientHeight : 0;
     const width = container ? container.clientWidth : 0;
-    this.setState({ height, width });
+    let Driver = null;
+    if (height && width) {
+      Driver = this.getDriver(this.props);
+    }
+    this.setState({ height, width, Driver });
   }
 
   getDriver() {
@@ -72,10 +77,9 @@ class FileViewer extends Component {
   }
 
   render() {
-    const Driver = this.getDriver(this.props);
-    let DriverElem = <Driver {...this.props} width={this.state.width} height={this.state.height} />;
-    if (!this.state.width || !this.state.height) {
-      DriverElem = null;
+    let DriverElem = null;
+    if (this.state.width && this.state.height) {
+      DriverElem = <this.state.Driver {...this.props} width={this.state.width} height={this.state.height} />;
     }
     return (
       <div className="pg-viewer-wrapper">
